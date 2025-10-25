@@ -18,8 +18,10 @@ fetch('http://localhost:5678/api/works')
   
 //PARTIE 1 VIDER LE CONTENU DE LA GALERIE
     // il faut afficher pour chaque éléments, une image et une caption
+
 function afficherWorks(works) {
-//récupérer les balises img et figcaption
+    
+//récupérer la galerie
     const gallery = document.querySelector(".gallery");
 
 //supprimer le contenu de gallery
@@ -46,3 +48,61 @@ figure.appendChild(caption)
 gallery.appendChild(figure)
 
   })}
+
+
+//PARTIE 2 CONFIGURER LES BOUTONS FILTRES ET LES RENDRE FONCTIONNELS
+
+// TOUS  1 : OBJETS 2 : APPARTEMENTS 3 : HOTELS ET RESTAURANTS 
+// Selon la categoryid du bouton cliqué, seules les images qui ont la categoryid corespondant s'affichent
+//on clique sur le bouton => la gallerie se vide puis l'on recrée uniquement les images ayant l'id correspondant
+//recuperer la categoryid du bouton,si la categoryid est 0 on lance la fonction afficherworks, si l'element possede un autre id alors on crée uniquement les elements qui ont cet id et on les implémentes dans le html
+
+
+
+// Créer des boutons avec des catégories 0 1 2 3
+const portfolio = document.querySelector("#portfolio");
+const h2 = portfolio.querySelector("h2");
+
+const divButton = document.createElement("div");
+divButton.classList.add("btn-filter-div")
+divButton.innerHTML = `
+  <button data-category="0" class="btn-filter">Tous</button>
+  <button data-category="1" class="btn-filter">Objets</button>
+  <button data-category="2" class="btn-filter">Appartements</button>
+  <button data-category="3" class="btn-filter">Hotels et restaurants</button>
+`;
+
+h2.insertAdjacentElement("afterend", divButton);
+
+
+
+
+//récupération des boutons
+const boutons = document.querySelectorAll(".btn-filter");
+// Ajout des listeners aux boutons
+boutons.forEach(bouton => {
+  bouton.addEventListener("click", () => {
+//récuperer la categoryid avec le listener
+    const categoryId = +bouton.dataset.category; 
+//si la categoryid est 0 alors lancer la fonction initiale 
+//sinon on vient crée une liste qui contient uniquement les éléments qui on le bon id et on lance la fonction avec cette liste
+    const worksFiltrés = categoryId === 0 ? works : works.filter(work => work.categoryId === categoryId); 
+
+    afficherWorks(worksFiltrés); // afficher uniquement les éléments filtrés
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
