@@ -98,6 +98,75 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+/*Mon code : PARTIE SE CONNECTER*/
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+	margin: 100px 0 250px 0;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width:379px;
+}
+.form label {
+	margin: 5px;
+}
+.form h2 {
+	font-size: 30px;
+	font-weight: bold;
+}
+.form input {
+	height: 51px;
+	border: 0px;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.25);
+}
+.form p {
+	color: #3D3D3D;
+	font-family: "Work Sans";
+	font-size:14px;
+}
+.lien {
+	color: #3D3D3D;
+	font-family: "Work Sans";
+	font-size:14px;
+	text-decoration: underline; 
+  	text-decoration-color: #3D3D3D;
+}
+.form-button {
+	font-family: "Syne";
+	color:white;
+	background-color:#1D6154;
+	width:179px;
+	height:36px;
+	border-radius: 60px;
+	border: 0px;
+}
+.form-button:hover {
+	background-color:#0E2F28;
+}
+
+
+
+nav img {
+	height:22px;
+	width:22px;
+}
+.login-page {
+	display:flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+#login-li {
+	font-weight:bold;
+}
+/*FIN DE MON CODE*/
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -126,7 +195,7 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-/*Mon code */
+/*Mon code : PARTIE FILTRER*/
 .btn-filter-div{
 	display:flex;
 	justify-content: center;
@@ -155,12 +224,9 @@ li:hover {
 	color: white;
 
 }
-
-
-
-
-
 /*Fin de mon code*/
+
+
 .gallery {
 	width: 100%;
 	display: grid;
