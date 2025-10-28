@@ -100,6 +100,18 @@ li:hover {
 }
 
 /*Mon code : PARTIE SE CONNECTER*/
+.login-page {
+	display:flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #FFFEF8;
+}
+
+nav img {
+	height:22px;
+	width:22px;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
@@ -151,16 +163,14 @@ form {
 }
 
 
+li a, li a:visited{
+	text-decoration: none;
+	color: inherit; 
+}
 
-nav img {
-	height:22px;
-	width:22px;
-}
-.login-page {
-	display:flex;
-	flex-direction: column;
-	height: 100%;
-}
+
+
+
 
 #login-li {
 	font-weight:bold;
