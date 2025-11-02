@@ -61,7 +61,7 @@ gallery.appendChild(figure)
 
 // Créer des boutons avec des catégories 0 1 2 3
 const portfolio = document.querySelector("#portfolio");
-const h2 = portfolio.querySelector("h2");
+const galleryTitle = document.getElementById("gallery-title");
 
 const divButton = document.createElement("div");
 divButton.classList.add("btn-filter-div")
@@ -72,7 +72,7 @@ divButton.innerHTML = `
   <button data-category="3" class="btn-filter">Hotels et restaurants</button>
 `;
 
-h2.insertAdjacentElement("afterend", divButton);
+galleryTitle.insertAdjacentElement("afterend", divButton);
 
 
 
@@ -91,6 +91,46 @@ boutons.forEach(bouton => {
     afficherWorks(worksFiltrés); // afficher uniquement les éléments filtrés
   });
 });
+
+ 
+//PARTIE 4 Récupérer le token de connexion, ajouter les style dédiés au mode édition, rendre possible la deconnexion
+//Récupération du token, et 
+const token = localStorage.getItem("token");
+
+if (token) {
+  activerModeEdition();
+}
+
+function activerModeEdition() {
+
+// créer un une banniere, créer un élément div, lui ajouter un texte "Mode édition" et le l'intégrer dans le html au dessus de du header nav bar
+  const banner = document.createElement("div")
+  banner.classList.add("edition-banner")
+  banner.innerHTML = `<p><i class="fa-regular fa-pen-to-square"></i> Mode édition</p>`;
+  document.body.prepend(banner);
+
+//login devient logout
+  const loginLiIndex = document.getElementById("login-li-index")
+  loginLiIndex.textContent = "logout"
+
+//Suppresion des filtres
+const filtersDiv = document.querySelector(".btn-filter-div");
+filtersDiv.classList.add("hidden")
+
+//apparition du bouton modifier
+const buttonGallery = document.getElementById("gallery-title-button")
+buttonGallery.classList.remove("hidden")
+
+//logout deconnecte l'utilisateur
+ loginLiIndex.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.reload();
+});
+ 
+}
+
+
+
 
 
 

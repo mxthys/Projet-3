@@ -98,6 +98,53 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+/*Mon code : PARTIE FILTRER*/
+.btn-filter-div{
+	display:flex;
+	justify-content: center;
+	gap:10px;
+	margin: 0 0 50px 0;
+}
+
+.btn-filter{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	height:37px;
+	border:1px solid #1D6154;
+	border-radius:60px;
+	margin: 0;
+	padding: 20px;
+	color:#1D6154;
+	font-size:16px;
+	font-family: 'Syne', sans-serif;
+	
+}
+
+.btn-filter:hover {
+	background-color:#1D6154;
+	color: white;
+
+}
+#gallery-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 150px 0 30px 0;
+}
+#gallery-title-button {
+	height:18px;
+	font-size: 14px;
+	margin: 0 0 30px 0;
+	border: none;
+	font-family: "Work Sans";
+	background-color: white;
+}
+.hidden {
+	display: none;
+}
+/*Fin de mon code*/
 
 /*Mon code : PARTIE SE CONNECTER*/
 .login-page {
@@ -177,6 +224,20 @@ li a, li a:visited{
 }
 /*FIN DE MON CODE*/
 
+/* Mode édition*/
+.edition-banner {
+	width: 100%;
+	height: 50px;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:16px;
+	font-family: "Work Sans";
+}
+/*FIN DE MON CODE*/
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -205,36 +266,7 @@ li a, li a:visited{
 	margin-bottom: 1em;
 }
 
-/*Mon code : PARTIE FILTRER*/
-.btn-filter-div{
-	display:flex;
-	justify-content: center;
-	gap:5px;
-	margin: 0 0 50px 0;
-}
 
-.btn-filter{
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color: white;
-	height:37px;
-	border:1px solid #1D6154;
-	border-radius:60px;
-	margin: 0;
-	padding: 20px;
-	color:#1D6154;
-	font-size:16px;
-	font-family: 'Syne', sans-serif;
-	
-}
-
-.btn-filter:hover {
-	background-color:#1D6154;
-	color: white;
-
-}
-/*Fin de mon code*/
 
 
 .gallery {
