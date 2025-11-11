@@ -98,12 +98,64 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
-/*Mon code : PARTIE FILTRER*/
+													/*Mon code : PARTIE GALERIE*/
+.gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 305px);
+	grid-column-gap: 20px;
+	grid-row-gap: 40px;
+	justify-content: center;
+}
+
+.gallery img {
+	width: 100%;
+
+}
+
+.gallery figcaption {
+	margin: 3px 0 0 0;
+}
+
+.figureGallery {
+	width: 305px;
+	height: 407px;
+}
+
+.btn-filter:hover {
+	background-color:#1D6154;
+	color: white;
+
+}
+
+#gallery-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 150px 0 30px 0;
+}
+
+#gallery-title-button {
+	height:18px;
+	font-size: 14px;
+	margin: 0 0 30px 0;
+	border: none;
+	font-family: "Work Sans";
+	background-color: white;
+}
+
+.hidden {
+	display: none;
+}
+													/*Mon code : PARTIE FILTRER*/
 .btn-filter-div{
 	display:flex;
 	justify-content: center;
 	gap:10px;
 	margin: 0 0 50px 0;
+}
+.btn-filter-div.hidden {
+	 display: none; 
 }
 
 .btn-filter{
@@ -119,34 +171,9 @@ li:hover {
 	color:#1D6154;
 	font-size:16px;
 	font-family: 'Syne', sans-serif;
-	
 }
 
-.btn-filter:hover {
-	background-color:#1D6154;
-	color: white;
-
-}
-#gallery-title {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 150px 0 30px 0;
-}
-#gallery-title-button {
-	height:18px;
-	font-size: 14px;
-	margin: 0 0 30px 0;
-	border: none;
-	font-family: "Work Sans";
-	background-color: white;
-}
-.hidden {
-	display: none;
-}
-/*Fin de mon code*/
-
-/*Mon code : PARTIE SE CONNECTER*/
+													/*Mon code : PARTIE SE CONNECTER*/
 .login-page {
 	display:flex;
 	flex-direction: column;
@@ -209,22 +236,17 @@ form {
 	background-color:#0E2F28;
 }
 
-
 li a, li a:visited{
 	text-decoration: none;
 	color: inherit; 
 }
 
-
-
-
-
 #login-li {
 	font-weight:bold;
 }
-/*FIN DE MON CODE*/
 
-/* Mode édition*/
+
+															/* Mode édition*/
 .edition-banner {
 	width: 100%;
 	height: 50px;
@@ -236,7 +258,241 @@ li a, li a:visited{
 	font-size:16px;
 	font-family: "Work Sans";
 }
-/*FIN DE MON CODE*/
+															/*Partie Modale*/
+#modal-container.hidden {
+	 display: none; 
+	}
+
+#modal-container{
+	position: fixed;
+	background: rgba(0,0,0,0.6); 
+	inset: 0;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+#modal-content {
+	background-color: white;
+	width:630px;
+	
+	border-radius:10px;
+	text-align: center;
+}
+
+.divContenu {
+	width: 420px;
+	margin: auto;
+}
+.divCloseBack {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px 30px 0 30px;
+}
+
+#divCloseButton {
+	display: flex;
+	justify-content: flex-end;
+	margin: 30px 30px 0 30px;
+}
+
+#closeIcon, #backIcon {
+	font-size:24px;
+}
+
+.backCloseButton {
+    background-color: white;
+    border: none;
+}
+
+.gallery-title {
+	text-align: center;
+	font-family: "Work Sans";
+	color: black;
+	font-weight: 400;
+	font-size:26px;
+	
+}
+
+.modale-gallery {
+	width: 420px;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(5, 76.61px);
+	row-gap:30px;
+    column-gap: 10px;
+	margin: 50px auto 0 auto;
+}
+.modale-gallery  img {
+	width: 76.61px;
+	height: auto;
+	margin:auto;
+}
+.modal-hr {
+	margin: 60px 0 0 0;
+}
+
+.addPhoto {
+	margin:35px 0;
+	width:237px;
+	height:36px;
+	border-radius:60px;
+	color: white;
+	background-color: #1D6154;
+	font-family: "Syne";
+	font-size: 14px;
+	font-weight: bold;
+	border: none;
+}
+
+.addPhoto:hover {
+	background-color:#0E2F28;
+}
+
+.modal-img-div{
+	width:78.63px;
+	height:102.57px;
+}
+
+.delete-button {
+    color: white;
+    background-color: black;
+    border: none;
+    position: relative;
+    bottom: 98px;
+    left: 55px;
+    font-size: 12px;
+	font-weight:500;
+    border-radius: 2px;
+    width: 17px;
+    height: 17px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	}
+.delete-button:hover{
+	background-color: rgb(79, 79, 79);
+}
+
+.divForm {
+	width: 420px;
+	margin: 30px auto 40px auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.formTitle {
+	font-family: "Work sans";
+  	font-size: 26px;
+	color: #000000;
+	margin: 0 0 20px 0;
+}
+.divDepot {
+	display: flex;
+	flex-direction: column;
+	background-color: #E8F1F6;
+	height: 169px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	gap: 10px;
+	width: 420px;
+}
+
+#pictureIcon {
+	font-size: 76px;
+    margin: 20px 0 0 0;
+    color: #B9C5CC;
+}
+
+#add-input {
+	width: 173px;
+    height: 36px;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #CBD6DC;
+    color: #306685;
+    font-family: "Work Sans";
+    font-size: 16px;
+}
+
+.divDepot p {
+	font-size:10px;
+    margin: 0 0 20px 0;
+    color:#444444;
+}
+
+.divChamp {
+	display:flex;
+    flex-direction: column;
+    font-family: "Work sans";
+    color: #3D3D3D;
+    font-size: 14px;
+    font-weight: 500
+}
+
+#textarea, #categorySelect {
+  height: 51px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  margin: 10px 0 0 0;
+}
+
+.divChamp label {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#labelSelect {
+	margin: 20px 0 0 0;
+}
+
+hr {
+	margin: 20px 0;
+	width: 100%;
+	height: 1px;
+	background-color: #B3B3B3;
+	border: none;
+}
+
+.buttonValider {
+	background-color: #A7A7A7;
+	color: white;
+	border: none;
+	width:237px;
+	height:36px;
+	margin:auto;
+	border-radius: 60px;
+	font-family: "Work sans";
+	font-size: 14px;
+}
+
+													/* A REVOIR prévisualisation*/ 
+.image-preview {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+													/* A REVOIR bouton qui devient vert et cliquable une fois les champs remplis*/ 
+.buttonValider {								
+  background-color: gray;
+  cursor: not-allowed;
+  transition: background-color 0.3s;
+}
+
+.buttonValider.active {
+  background-color: green;
+  cursor: pointer;
+}
+
+
+															/*Fin partie modale*/
 
 #introduction {
 	display: flex;
@@ -269,18 +525,7 @@ li a, li a:visited{
 
 
 
-.gallery {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-}
 
-.gallery img {
-	width: 100%;
-
-}
 #contact {
 	width: 50%;
 margin: auto;
