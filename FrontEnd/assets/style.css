@@ -110,7 +110,8 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
+	height: 100%;
+  	object-fit: cover;
 }
 
 .gallery figcaption {
@@ -323,9 +324,10 @@ li a, li a:visited{
 	margin: 50px auto 0 auto;
 }
 .modale-gallery  img {
-	width: 76.61px;
-	height: auto;
+	width: 100%;
+	height: 100%;
 	margin:auto;
+	object-fit: cover;
 }
 .modal-hr {
 	margin: 60px 0 0 0;
@@ -349,7 +351,7 @@ li a, li a:visited{
 }
 
 .modal-img-div{
-	width:78.63px;
+	width:76.86px;
 	height:102.57px;
 }
 
@@ -470,21 +472,18 @@ hr {
 	border-radius: 60px;
 	font-family: "Work sans";
 	font-size: 14px;
+	cursor: not-allowed;
+    transition: background-color 0.3s;
 }
 
 													/* A REVOIR prévisualisation*/ 
 .image-preview {
-  width: 100%;
+  width: 128px;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
 }
 													/* A REVOIR bouton qui devient vert et cliquable une fois les champs remplis*/ 
-.buttonValider {								
-  background-color: gray;
-  cursor: not-allowed;
-  transition: background-color 0.3s;
-}
+
 
 .buttonValider.active {
   background-color: green;

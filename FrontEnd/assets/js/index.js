@@ -184,6 +184,7 @@ function afficherGalerieModale() {
   modalGallery.classList.add("modale-gallery");
   divContenu.appendChild(modalGallery);
   afficherWorksModal(works);
+  
 
   // HR
   const hrModal = document.createElement("hr");
@@ -228,12 +229,43 @@ const modalGalleryDiv = document.querySelector(".modale-gallery")
 imgModal.appendChild(img)
 imgModal.appendChild(deleteButton)
 modalGalleryDiv.appendChild(imgModal)
+
+imgDelete()
 })}
 
                                               //FONCTION QUI PERMET DE SUPPRIMER DES IMAGES
-function imgDelete(){
-  //recuperer l'element poubelle
-  //lui ajouter un listener qui fetch la suppression de l'image 
+function imgDelete() {
+  const deleteButtons = document.querySelectorAll(".delete-button");
+
+  deleteButtons.forEach((button, index) => {
+    button.addEventListener("click", async () => {
+      const workId = works[index].id; // récupérer l'id correspondant
+
+      try {
+        const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Impossible de supprimer l'image");
+        }
+
+        // Retirer l'élément du tableau works
+        works = works.filter(work => work.id !== workId);
+
+        // Mettre à jour les galeries
+        afficherWorks(works);
+        afficherGalerieModale();
+        console.log("✅ Image supprimée :", workId);
+      } catch (error) {
+        console.error("Erreur :", error);
+        alert("Erreur lors de la suppression de l'image.");
+      }
+    });
+  });
 }
                                               //FONCTION QUI AFFICHE LE FORMULAIRE D'AJOUT D'IMAGE
 
@@ -278,7 +310,7 @@ function afficherFormulaireAjout() {
 
   divDepot.innerHTML = `<i id="pictureIcon" class="fa-solid fa-image"></i>
                         <label for="ajout-input" id="add-input">+ Ajouter photo</label>
-                        <input type="file" id="ajout-input" class="hidden">
+                        <input type="file" id="ajout-input" accept="image/*" class="hidden">
                         <p>jpg, png 4mo max</p>`
   
 const divChamp = document.createElement("div")
@@ -305,10 +337,12 @@ modalContent.appendChild(divForm)
 
 afficherImgajout()
 categoryFill()
+activerFormulaireAjout()
 }
 
-                                              //Fonction qui permet de prévisualiser l'image déposée dans l'input file
-function afficherImgajout(){
+                                                                //FONCTION PREVISUALISATION D'IMAGE DE L'INPUT
+
+  function afficherImgajout(){
 const inputFile = document.getElementById("ajout-input");
 const depot = document.querySelector(".divDepot"); // 
 
@@ -325,14 +359,9 @@ inputFile.addEventListener("change", (event) => {
 });
 }
 
+                                                                //FONCTION CATEGORIE AVEC L'API
 
-
-                                                                //FIN MODALE
-
-
-
-//Les catégories doivent être remplies avec les catégories de contenu dans les données de l'API
-function categoryFill() {
+  function categoryFill() {
   const select = document.getElementById("categorySelect");
   const optionVide = document.createElement("option")
   select.appendChild(optionVide)
@@ -353,28 +382,82 @@ function categoryFill() {
   });
 }
 
+//fonction qui vérifie que tous les champs sont remplis, rend le bouton valider cliquable et ajoute l'image a la galerie
+function activerFormulaireAjout() {
 
-//A REVOIR FONCTION QUI REND LE BOUTON CLIQUABLE QUAND TOUS LES CHAMPS SONT REMPLIS
-const inputFile = document.getElementById("ajout-input");
-const titleInput = document.getElementById("textarea");
-const categorySelect = document.getElementById("categorySelect");
+  const inputFile = document.getElementById("ajout-input");
+  const titleInput = document.getElementById("textarea");
+  const categorySelect = document.getElementById("categorySelect");
+  const buttonValider = document.querySelector(".buttonValider");
 
-function checkFormValidity() {
-  const fileSelected = inputFile.files.length > 0;           // y a-t-il un fichier ?
-  const titleFilled = titleInput.value.trim() !== "";        // le titre n'est pas vide ?
-  const categorySelected = categorySelect.value !== "";     // une catégorie est choisie ?
+  function checkFormValidity() {
+    const fileSelected = inputFile.files.length > 0;
+    const titleFilled = titleInput.value.trim() !== "";
+    const categorySelected = categorySelect.value !== "";
 
-  if (fileSelected && titleFilled && categorySelected) {
-    buttonValider.classList.add("active");  // on ajoute la classe verte
-    buttonValider.disabled = false;         // on active le bouton
-  } else {
-    buttonValider.classList.remove("active"); // sinon on enlève la classe
-    buttonValider.disabled = true;            // et on le désactive
+    if (fileSelected && titleFilled && categorySelected) {
+      buttonValider.classList.add("active");
+      buttonValider.disabled = false;
+    } else {
+      buttonValider.classList.remove("active");
+      buttonValider.disabled = true;
+    }
   }
+
+  // Écoute les changements
+  inputFile.addEventListener("change", checkFormValidity);
+  titleInput.addEventListener("input", checkFormValidity);
+  categorySelect.addEventListener("change", checkFormValidity);
+
+  checkFormValidity(); // premier check
+
+  // Submit
+  buttonValider.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const file = inputFile.files[0];
+    const title = titleInput.value.trim();
+    const category = categorySelect.value;
+
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("title", title);
+    formData.append("category", category);
+
+    try {
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error("Erreur API");
+
+      const newWork = await response.json();
+      works.push(newWork);
+
+      afficherWorks(works);
+      afficherGalerieModale(); // rechargement modale
+
+    } catch (error) {
+      console.error(error);
+      alert("Impossible d’ajouter l’image.");
+    }
+  });
+
 }
 
-//Le bouton doit ensuite envoyer l'image à l'API et les champs doivent ensuite se vider
-//La galerie doit se mettre à jour avec la nouvelle image 
+                                                                //FIN MODALE
+
+
+
+
+
+
+
+
 
 
 
