@@ -311,7 +311,7 @@ function afficherFormulaireAjout() {
   divDepot.innerHTML = `<i id="pictureIcon" class="fa-solid fa-image"></i>
                         <label for="ajout-input" id="add-input">+ Ajouter photo</label>
                         <input type="file" id="ajout-input" accept="image/*" class="hidden">
-                        <p>jpg, png 4mo max</p>`
+                        <p id="rule">jpg, png 4mo max</p>`
   
 const divChamp = document.createElement("div")
   divChamp.classList.add("divChamp")
@@ -340,23 +340,39 @@ categoryFill()
 activerFormulaireAjout()
 }
 
-                                                                //FONCTION PREVISUALISATION D'IMAGE DE L'INPUT
+                                                            //FONCTION PREVISUALISATION D'IMAGE DE L'INPUT
 
-  function afficherImgajout(){
-const inputFile = document.getElementById("ajout-input");
-const depot = document.querySelector(".divDepot"); // 
 
-inputFile.addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const imagePreview = document.createElement("img");
-    imagePreview.src = URL.createObjectURL(file);
-    imagePreview.classList.add("image-preview");
 
-    depot.innerHTML = ""; // on vide
-    depot.appendChild(imagePreview); // on ajoute
-  }
-});
+function afficherImgajout() {
+  const inputFile = document.getElementById("ajout-input");
+  const label = document.getElementById("add-input");
+
+  inputFile.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+
+      // On vide le label (supprime ancienne image, icône, texte…)
+      label.innerHTML = "";
+      label.id = "add-input2"
+
+      const rule = document.getElementById("rule")
+      rule.textContent = ""
+
+
+      // On crée la preview
+      const imagePreview = document.createElement("img");
+      imagePreview.src = URL.createObjectURL(file);
+      imagePreview.classList.add("image-preview");
+
+      // On l’affiche dans le label
+      label.appendChild(imagePreview);
+
+      
+      const pictureIcon = document.getElementById("pictureIcon")
+      pictureIcon.id = "pictureIconHidden"
+    }
+  });
 }
 
                                                                 //FONCTION CATEGORIE AVEC L'API
@@ -432,7 +448,7 @@ function activerFormulaireAjout() {
         },
         body: formData,
       });
-
+ 
       if (!response.ok) throw new Error("Erreur API");
 
       const newWork = await response.json();

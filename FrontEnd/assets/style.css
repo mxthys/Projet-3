@@ -323,12 +323,14 @@ li a, li a:visited{
     column-gap: 10px;
 	margin: 50px auto 0 auto;
 }
+
 .modale-gallery  img {
 	width: 100%;
 	height: 100%;
 	margin:auto;
 	object-fit: cover;
 }
+
 .modal-hr {
 	margin: 60px 0 0 0;
 }
@@ -407,6 +409,12 @@ li a, li a:visited{
     color: #B9C5CC;
 }
 
+#pictureIconHidden {
+	font-size: 0;
+	margin: 20px 0 0 0;
+    color: #B9C5CC;
+}
+
 #add-input {
 	width: 173px;
     height: 36px;
@@ -418,6 +426,22 @@ li a, li a:visited{
     align-items: center;
     box-sizing: border-box;
     background-color: #CBD6DC;
+    color: #306685;
+    font-family: "Work Sans";
+    font-size: 16px;
+}
+
+#add-input-2 {
+	background-color: transparent;
+	width: 173px;
+    height: 36px;
+    border: none;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
     color: #306685;
     font-family: "Work Sans";
     font-size: 16px;
@@ -476,13 +500,15 @@ hr {
     transition: background-color 0.3s;
 }
 
-													/* A REVOIR prévisualisation*/ 
+													/*prévisualisation*/ 
 .image-preview {
   width: 128px;
-  height: 200px;
+  height: 169px;
   object-fit: cover;
+  position: relative;
+  bottom: -1px;
 }
-													/* A REVOIR bouton qui devient vert et cliquable une fois les champs remplis*/ 
+													/*bouton qui devient vert et cliquable une fois les champs remplis*/ 
 
 
 .buttonValider.active {
