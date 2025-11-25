@@ -32,13 +32,13 @@ fetch("http://localhost:5678/api/users/login", {
     console.log("Réponse du serveur :", data);
 
     if (data.token) {
-      console.log("✅ Connexion réussie !");
+      console.log("Connexion réussie !");
       // Sauvegarder le token pour plus tard
       localStorage.setItem("token", data.token);
       // Rediriger vers la page principale
       window.location.href = "index.html";
     } else {
-      console.log("❌ Identifiants incorrects !");
+      console.log("Identifiants incorrects !");
       alert("E-mail ou mot de passe incorrect.");
     }
   })

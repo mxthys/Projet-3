@@ -1,6 +1,6 @@
 
 
-  let works = []; // 🔹 variable qui stocke les données
+  let works = []; //  variable qui stocke les données
 
 fetch('http://localhost:5678/api/works')
   .then(response => {
@@ -197,7 +197,7 @@ function afficherGalerieModale() {
   addPhoto.classList.add("addPhoto");
   modalContent.appendChild(addPhoto);
 
-  // ✅ Listener correctement attaché
+  // Listener correctement attaché
   addPhoto.addEventListener("click", afficherFormulaireAjout);
 }
 
@@ -259,7 +259,7 @@ function imgDelete() {
         // Mettre à jour les galeries
         afficherWorks(works);
         afficherGalerieModale();
-        console.log("✅ Image supprimée :", workId);
+        console.log("Image supprimée :", workId);
       } catch (error) {
         console.error("Erreur :", error);
         alert("Erreur lors de la suppression de l'image.");
