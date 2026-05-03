@@ -1,6 +1,6 @@
 let works = []; //  variable qui stocke les données
 
-fetch('http://localhost:5678')
+fetch('https://projet-3-dnxt.onrender.com/api/works')
     .then(response => {
         if (!response.ok) {
             throw new Error('Erreur réseau');
@@ -243,7 +243,7 @@ function imgDelete() {
             const workId = works[index].id; // récupérer l'id correspondant
 
             try {
-                const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+                const response = await fetch(`https://projet-3-dnxt.onrender.com/api/works/${workId}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -442,7 +442,7 @@ function activerFormulaireAjout() {
         formData.append("category", category);
 
         try {
-            const response = await fetch("http://localhost:5678/api/works", {
+            const response = await fetch("https://projet-3-dnxt.onrender.com/api/works", {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
