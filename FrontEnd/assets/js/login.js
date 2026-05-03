@@ -20,7 +20,7 @@ loginForm.addEventListener("submit", function(event) {
     const chargeUtile = JSON.stringify(identifiants)
 
     //envoyer les valeurs
-    fetch("http://localhost:5678", {
+    fetch("https://projet-3-dnxt.onrender.com/api/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
