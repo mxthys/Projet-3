@@ -20,7 +20,7 @@ loginForm.addEventListener("submit", function(event) {
     const chargeUtile = JSON.stringify(identifiants)
 
     //envoyer les valeurs
-    fetch("http://localhost:5678/api/users/login", {
+    fetch("http://localhost:5678", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
