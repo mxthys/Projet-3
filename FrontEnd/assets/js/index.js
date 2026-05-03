@@ -1,6 +1,6 @@
 let works = []; //  variable qui stocke les données
 
-fetch('http://localhost:5678/api/works')
+fetch('http://localhost:5678')
     .then(response => {
         if (!response.ok) {
             throw new Error('Erreur réseau');
